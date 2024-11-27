@@ -1,25 +1,36 @@
-let cuotas = prompt("Selecciona cantidad de cuotas para calcular descuento (1, 3, 6, 9, 12) o escribe 'Salir' para finalizar:");
-
-while (cuotas !== "Salir") {
-    switch (cuotas) {
-        case "1":
-            alert("20% de descuento");
-            break;
-        case "3":
-            alert("15% de descuento");
-            break;
-        case "6":
-            alert("10% de descuento");
-            break;
-        case "9":
-            alert("5% de descuento");
-            break;
-        case "12":
-            alert("Sin descuento");
-            break;
-        default:
-            alert("Cantidad de cuotas ingresada no disponible");
-            break;
+// Constructor productos
+class Producto{
+    constructor(id, nombre, categoria, precio){
+    this.id = id;
+    this.nombre = nombre;
+    this.categoria = categoria;
+    this.precio = precio;
     }
-    cuotas = prompt("Selecciona cantidad de cuotas para calcular descuento (1, 3, 6, 9, 12) o escribe 'Salir' para finalizar:");
+}    
+
+// Filtrar Productos
+function filtrarPrecio(productos){
+    const resultado = productos.filter(producto => {
+    const condicion = producto.precio <= 10000
+    return condicion;
+    })
+    return resultado 
 }
+
+
+// Array de productos
+const productos = [
+    new Producto(1, "Linea Aviator", "Lentes", 15000),
+    new Producto(2, "Linea Erika/Chris", "Lentes", 14000),
+    new Producto(3, "Linea Scuderia Ferrari", "Lentes", 18000),
+    new Producto(4, "Fundas y Estuches", "Estuches", 5000),
+    new Producto(5, "Adicionales", "Accesorios", 2500),
+];
+
+
+// Para probar en consola
+const productosFiltrados = filtrarPrecio(productos);
+console.log(productosFiltrados);
+    
+
+
